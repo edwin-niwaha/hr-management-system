@@ -1,0 +1,15 @@
+# Environments
+.env
+.venv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*/migrations
+
+# Django #
+db.sqlite3
+media
+
+# Visual Studio Code # 
+.vscode/* 
+
