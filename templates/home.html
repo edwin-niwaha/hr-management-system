@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_block %}
+
+
+<style>
+   .row {
+      height: 80vh;
+   }
+</style>
+{% endblock %}
+
+{% block body_block %}
+
+{% include 'navbar.html' %}
+
+<div class="container">
+   <div class="row">
+      <div class="col-md-6 m-auto">
+         <img src="{% static 'images/login.png' %}" class="img-fluid mx-auto" alt="bg">
+      </div>
+      <div class="col-md-6 m-auto">
+         <div class="d-flex justify-content-center align-items-center">
+            <a href="/employees/leave-request/">
+               <button type="button" class="btn btn-info btn-rounded m-2">Apply for Leave</button>
+            </a>
+            or
+            <a href="/account/signup-employee/">
+               <button type="button" class="btn btn-info btn-rounded ms-2">Register</button>
+            </a>
+         </div>
+      </div>
+   </div>
+</div>
+<br>
+
+{% include "footer.html" %}
+{% endblock %}
