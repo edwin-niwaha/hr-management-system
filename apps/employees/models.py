@@ -9,13 +9,14 @@ class leaveCategory(models.Model):
     leave_name = models.CharField(max_length=100)
     leave_description = models.CharField(max_length=250)
     number_days_allowed = models.PositiveIntegerField(
-        validators=[MaxValueValidator(21), MinValueValidator(0)]
+        validators=[MaxValueValidator(30), MinValueValidator(0)]
     )
     created_at = models.DateField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.leave_name
+        # return f"LeaveName: {self.leave_name}, Days: {self.number_days_allowed}"
 
 
 class leaveApplication(models.Model):

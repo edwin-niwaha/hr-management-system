@@ -23,8 +23,8 @@ from apps.employees import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
-    path("account/", include("apps.login.urls")),
-    path("employees/", include("apps.employees.urls")),
+    path("account/", include("apps.login.urls", namespace="emp_login")),
+    path("employees/", include("apps.employees.urls", namespace="emp")),
 ]
 
 if settings.DEBUG:

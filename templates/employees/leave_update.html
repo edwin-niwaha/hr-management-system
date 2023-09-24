@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block title_block %}
-Leave Category
+Leave Application
 {% endblock %}
 
 {% block css_block %}
@@ -22,11 +22,11 @@ Leave Category
    <div class="padding">
       <div class="row mb-5">
          <div class="p-5 m-auto rounded shadow-lg col-md-6 bg-body">
-            <h3 class="text-center text-success"> Leave Category</h3>
+            <h3 class="text-center text-success"> Leave Application Update</h3>
             </h3>
             <form method="post" enctype="multipart/form-data">
                {% csrf_token %} {{form|crispy}}
-               <input class="btn btn-dark" type="submit" value="Add Category">
+               <input class="btn btn-dark" onclick="return confirm('Proceed to Update?');" type="submit" value="Update">
             </form>
          </div>
       </div>

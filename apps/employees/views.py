@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .forms import LeaveRequestForm, LeaveCategoryForm
 from .models import leaveApplication
-
 
 # Create your views here.
 
@@ -17,8 +16,12 @@ def UserDashboard(request):
     requestLeave = (
         leaveApplication.objects.all().filter(employee=request.user.employee).count(),
     )
+    approved = (leaveApplication.objects.all().filter(leave_status="approved").count(),)
+    rejected = (leaveApplication.objects.all().filter(leave_status="rejected").count(),)
     dict = {
         "request": requestLeave[0],
+        "approved": approved[0],
+        "rejected": rejected[0],
     }
 
     return render(request, "employees/user_dashboard.html", context=dict)
@@ -51,3 +54,21 @@ def LeaveRequest(request):
             return redirect("/")
 
     return render(request, "employees/leave_request.html", context={"form": form})
+
+
+@login_required(login_url="/account/login-employee")
+def LeaveHistory(request):
+    applications = leaveApplication.objects.filter(employee=request.user.employee)
+    return render(
+        request, "employees/leave_history.html", context={"applications": applications}
+    )
+
+
+@login_required(login_url="/account/login-employee")
+def update_leave(request, id, template_name="employees/leave_update.html"):
+    leave = get_object_or_404(leaveApplication, id=id)
+    form = LeaveRequestForm(request.POST or None, instance=leave)
+    if form.is_valid():
+        form.save()
+        return redirect("/")
+    return render(request, template_name, {"form": form})
