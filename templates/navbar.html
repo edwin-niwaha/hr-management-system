@@ -46,10 +46,13 @@
 
                {% if user.is_authenticated %}
                <li class="nav-item">
-                  <a class="nav-link" href="/employees/employee-dashboard">Dashboard</a>
+                  <a class="nav-link" href="/employees/user-dashboard">Dashboard</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/employees/employee-leave-history">Leave Application History</a>
+                  <a class="nav-link" href="/employees/employee-leave-history">Leave History</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/employees/add-leave-category">Leave Category</a>
                </li>
                {% endif %}
 
@@ -60,7 +63,7 @@
                {% if user.is_authenticated %}
 
                <li>
-                  <a class="nav-link" href="#">Apply for Leave</a>
+                  <a class="nav-link" href="/employees/leave-request">Apply for Leave</a>
                </li>
                <li>
                   <a class="nav-link" href="/account/edit-employee">Edit Info</a>

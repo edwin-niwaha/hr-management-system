@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}
+HR Management System
+{% endblock %}
+
+{% block css_block %}
+<style>
+   .status {
+      border-radius: 10px;
+      color: white;
+      margin: 10px 20px;
+      padding: 20px;
+      text-align: center;
+   }
+
+   #leave {
+      font-size: 60px;
+      font-weight: bold;
+      text-align: end;
+   }
+
+   .padding {
+      margin-top: 100px;
+   }
+</style>
+{% endblock %}
+
+{% block body_block %}
+
+{% include 'navbar.html' %}
+
+<div class="container-fluid">
+   <div class="padding">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <div class="status" style="background-color:#4ea4f0">
+               <h3>Leave Requests</h3>
+               <h1><span id="leave">{{request}}</span></h1>
+            </div>
+         </div>
+
+         <div class="col-md-6 m-auto">
+            <div class="status" style="background-color:#a64cf0">
+               <h3>Approved</h3>
+               <h1><span id="leave"></span>{{request}}</h1>
+            </div>
+         </div>
+         <div class="col-md-12 m-auto">
+            <div class="status" style="background-color:#4c4ff0">
+               <h3>Rejected</h3>
+               <h1><span id="leave"></span>{{request}}</h1>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% include 'footer.html' %}
+
+{% endblock %}
