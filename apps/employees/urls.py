@@ -5,13 +5,13 @@ from apps.employees import views
 app_name = "employees"
 urlpatterns = [
     path("user-dashboard/", views.UserDashboard, name="user_dashboard"),
-    path("add-leave-category/", views.add_category, name="add_category"),
+    path("add-leave-category/", views.addCategory, name="add_category"),
     path("leave-request/", views.LeaveRequest, name="leave_request"),
     path(
-        "employee-leave-history/",
+        "leave-history/",
         views.LeaveHistory,
         name="leave_history",
     ),
-    path("update-leave/<int:id>", views.update_leave, name="update_leave"),
-    path("delete-leave/<str:id>", views.delete_leave, name="delete_leave"),
+    path("update-leave/<int:id>", views.updateLeave, name="update_leave"),
+    path("delete-leave/<str:id>", views.deleteLeave, name="delete_leave"),
 ]

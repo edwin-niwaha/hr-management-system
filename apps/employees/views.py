@@ -28,14 +28,14 @@ def UserDashboard(request):
 
 
 @login_required(login_url="/account/login-employee")
-def add_category(request):
+def addCategory(request):
     form = LeaveCategoryForm()
 
     if request.method == "POST":
         form = LeaveCategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/")
+            return redirect("/employees/add-leave-category")
 
     return render(request, "employees/add_category.html", {"form": form})
 
@@ -51,8 +51,8 @@ def LeaveRequest(request):
             loan_obj = form.save(commit=False)
             loan_obj.employee = request.user.employee
             loan_obj.save()
-            return redirect("/")
-
+            return redirect("/employees/leave-request")
+    messages.success(request, "Leave Request sent successfully! !")
     return render(request, "employees/leave_request.html", context={"form": form})
 
 
@@ -65,17 +65,17 @@ def LeaveHistory(request):
 
 
 @login_required(login_url="/account/login-employee")
-def update_leave(request, id, template_name="employees/leave_update.html"):
+def updateLeave(request, id, template_name="employees/leave_update.html"):
     leave = get_object_or_404(leaveApplication, id=id)
     form = LeaveRequestForm(request.POST or None, instance=leave)
     if form.is_valid():
         form.save()
-        return redirect("/employees/employee-leave-history")
+        return redirect("/employees/leave-history")
     return render(request, template_name, {"form": form})
 
 
 @login_required(login_url="/account/login-employee")
-def delete_leave(request, id):
+def deleteLeave(request, id):
     loans = leaveApplication.objects.get(id=id)
     loans.delete()
-    return redirect("/employees/employee-leave-history")
+    return redirect("/employees/leave-history")
