@@ -7,9 +7,8 @@ HR Management System | Dashboard
 
 {% block css_block %}
 <style>
-   .status {
+   #status {
       border-radius: 10px;
-      color: white;
       margin: 10px 20px;
       padding: 20px;
       text-align: center;
@@ -35,20 +34,20 @@ HR Management System | Dashboard
    <div class="padding">
       <div class="row">
          <div class="col-md-6 m-auto">
-            <div class="status" style="background-color:#4ea4f0">
+            <div id="status" class="p-3 mb-2 bg-primary text-white">
                <h3>Leave Requests</h3>
                <h1><span id="leave">{{request}}</span></h1>
             </div>
          </div>
 
          <div class="col-md-6 m-auto">
-            <div class="status" style="background-color:#a64cf0">
+            <div id="status" class="p-3 mb-2 bg-success text-white">
                <h3>Approved</h3>
                <h1><span id="leave"></span>{{approved}}</h1>
             </div>
          </div>
          <div class="col-md-12 m-auto">
-            <div class="status" style="background-color:#4c4ff0">
+            <div id="status" class="p-3 mb-2 bg-info text-white">
                <h3>Rejected</h3>
                <h1><span id="leave"></span>{{rejected}}</h1>
             </div>

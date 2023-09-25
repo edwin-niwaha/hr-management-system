@@ -22,8 +22,9 @@ Leave Application
    <div class="padding">
       <div class="row mb-5">
          <div class="p-5 m-auto rounded shadow-lg col-md-6 bg-body">
-            <h3 class="text-center text-success"> Leave Application</h3>
+            <h3 class="text-center text-primary"> LEAVE APPLICATION</h3>
             </h3>
+            <hr>
             <form method="post" enctype="multipart/form-data">
                {% csrf_token %} {{form|crispy}}
                <input class="btn btn-dark" type="submit" value="Send Request">

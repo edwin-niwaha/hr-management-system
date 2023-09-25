@@ -13,5 +13,5 @@ urlpatterns = [
         name="leave_history",
     ),
     path("update-leave/<int:id>", views.update_leave, name="update_leave"),
-    # path("delete_leave/<str:id>", views.delete_loan, name="delete_loan"),
+    path("delete-leave/<str:id>", views.delete_leave, name="delete_leave"),
 ]

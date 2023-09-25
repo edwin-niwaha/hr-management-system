@@ -46,7 +46,7 @@ def sign_up_view(request):
     return render(
         request,
         "login/signup.html",
-        context={"form": form, "user": "Employee Register", "error": error},
+        context={"form": form, "user": "EMPLOYEE REGISTER", "error": error},
     )
 
 
@@ -69,12 +69,14 @@ def login_view(request):
                 "login/login.html",
                 context={
                     "form": form,
-                    "user": "Employee Login",
+                    "user": "EMPLOYEE LOGIN",
                     "error": "Invalid username or password",
                 },
             )
     return render(
-        request, "login/login.html", context={"form": form, "user": "Employee Login"}
+        request,
+        "login/login.html",
+        context={"form": form, "user": "EMPLOYEE LOGIN"},
     )
 
 

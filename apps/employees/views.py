@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
 from .forms import LeaveRequestForm, LeaveCategoryForm
 from .models import leaveApplication
 
@@ -70,5 +70,12 @@ def update_leave(request, id, template_name="employees/leave_update.html"):
     form = LeaveRequestForm(request.POST or None, instance=leave)
     if form.is_valid():
         form.save()
-        return redirect("/")
+        return redirect("/employees/employee-leave-history")
     return render(request, template_name, {"form": form})
+
+
+@login_required(login_url="/account/login-employee")
+def delete_leave(request, id):
+    loans = leaveApplication.objects.get(id=id)
+    loans.delete()
+    return redirect("/employees/employee-leave-history")

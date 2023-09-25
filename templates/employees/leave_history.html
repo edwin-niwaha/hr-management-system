@@ -24,6 +24,10 @@ Leave History
       color: red;
       font-size: 1.5rem;
    }
+
+   .padding {
+      margin-top: 100px;
+   }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 {% endblock %}
@@ -31,50 +35,54 @@ Leave History
 {% block body_block %}
 {% include 'navbar.html' %}
 <div class="container-fluid">
-   <h1 class="text-center text-primary">Employee Leave History</h1>
-   <div class="my-5 users">
-      <table class="table text-left table-light table-hover table-bordered table-striped">
-         <thead class="bg-dark ">
-            <tr class="text-dark ">
-               <th scope="col">#</th>
-               <th scope="col">User ID</th>
-               <th scope="col">User Name</th>
-               <th scope="col">Leave Type</th>
-               <th scope="col">Status</th>
-               <th scope="col">Applied On</th>
-               <th scope="col">Start Date</th>
-               <th scope="col">End Date</th>
-               <th colspan="3">Action</th>
-            </tr>
-         </thead>
-         <tbody>
-            {% for leave in applications %}
-            <tr>
-               <th scope="row">{{forloop.counter}}</th>
-               <td>{{leave.employee.id}}</td>
-               <td>{{leave.employee.user}}</td>
-               <td>{{leave.category}}</td>
-               <td>
-                  <button type="button" class="px-3 text-white btn btn-info btn-sm">
-                     {{leave.leave_status}}
-                  </button>
-               </td>
-               <td>{{leave.date_of_application}}</td>
-               <td>{{leave.leave_start}}</td>
-               <td>{{leave.leave_end}}</td>
-               <td><a href="{% url 'emp:update_leave' leave.id  %}"
-                     onclick="return confirm('Are you sure you want update?');">
-                     <span class="bi bi-pencil teal-color"> </span>
-                  </a>
-               </td>
-               <td><a href="#" onclick="return confirm('Are you sure you want to delete this record?');">
-                     <span class="bi bi-trash red-color"> </span>
-                  </a>
-               </td>
-            </tr>
-            {% endfor %}
-         </tbody>
-      </table>
+   <div class="padding">
+      <h3 class="text-center text-primary">EMPLOYEE LEAVE HISTORY</h3>
+      <hr>
+      <div class="my-5 users">
+         <table class="table text-left table-light table-hover table-bordered table-striped">
+            <thead class="bg-dark ">
+               <tr class="text-dark ">
+                  <th scope="col">#</th>
+                  <th scope="col">User ID</th>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Leave Type</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Applied On</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th colspan="3">Action</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for leave in applications %}
+               <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>{{leave.employee.id}}</td>
+                  <td>{{leave.employee.user}}</td>
+                  <td>{{leave.category}}</td>
+                  <td>
+                     <button type="button" class="px-3 text-white btn btn-info btn-sm">
+                        {{leave.leave_status}}
+                     </button>
+                  </td>
+                  <td>{{leave.date_of_application}}</td>
+                  <td>{{leave.leave_start}}</td>
+                  <td>{{leave.leave_end}}</td>
+                  <td><a title="Update" href="{% url 'emp:update_leave' leave.id  %}"
+                        onclick="return confirm('Are you sure you want update?');">
+                        <span class="bi bi-pencil teal-color"> </span>
+                     </a>
+                  </td>
+                  <td><a title="Delete" href="{% url 'emp:delete_leave' leave.id %}"
+                        onclick="return confirm('Are you sure you want to delete this record?');">
+                        <span class="bi bi-trash red-color"> </span>
+                     </a>
+                  </td>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
    </div>
 </div>
 
