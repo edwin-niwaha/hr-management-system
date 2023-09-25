@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.login.models import EmployeeSignUp
@@ -6,6 +7,7 @@ from apps.login.models import EmployeeSignUp
 
 
 class leaveCategory(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     leave_name = models.CharField(max_length=100)
     leave_description = models.CharField(max_length=250)
     number_days_allowed = models.PositiveIntegerField(
@@ -16,10 +18,10 @@ class leaveCategory(models.Model):
 
     def __str__(self):
         return self.leave_name
-        # return f"LeaveName: {self.leave_name}, Days: {self.number_days_allowed}"
 
 
 class leaveApplication(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     employee = models.ForeignKey(
         EmployeeSignUp, on_delete=models.CASCADE, related_name="employee_leave"
     )

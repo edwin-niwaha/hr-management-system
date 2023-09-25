@@ -12,6 +12,6 @@ urlpatterns = [
         views.LeaveHistory,
         name="leave_history",
     ),
-    path("update-leave/<int:id>", views.updateLeave, name="update_leave"),
+    path("update-leave/<str:id>", views.updateLeave, name="update_leave"),
     path("delete-leave/<str:id>", views.deleteLeave, name="delete_leave"),
 ]
