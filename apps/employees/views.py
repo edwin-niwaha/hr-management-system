@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LeaveRequestForm, LeaveCategoryForm
@@ -52,7 +54,6 @@ def LeaveRequest(request):
             loan_obj.employee = request.user.employee
             loan_obj.save()
             return redirect("/employees/leave-request")
-    messages.success(request, "Leave Request sent successfully! !")
     return render(request, "employees/leave_request.html", context={"form": form})
 
 
@@ -70,6 +71,7 @@ def updateLeave(request, id, template_name="employees/leave_update.html"):
     form = LeaveRequestForm(request.POST or None, instance=leave)
     if form.is_valid():
         form.save()
+        messages.success(request, "Application sent successfully!")
         return redirect("/employees/leave-history")
     return render(request, template_name, {"form": form})
 
@@ -78,4 +80,5 @@ def updateLeave(request, id, template_name="employees/leave_update.html"):
 def deleteLeave(request, id):
     loans = leaveApplication.objects.get(id=id)
     loans.delete()
-    return redirect("/employees/leave-history")
+    messages.success(request, "Deleted successfully!")
+    return HttpResponseRedirect(reverse("emp:leave_history"))

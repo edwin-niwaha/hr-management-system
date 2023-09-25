@@ -51,6 +51,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="{% url 'employees:leave_history' %}">Leave History</a>
                </li>
+               <li>
+                  <a class="nav-link" href="/employees/leave-request">Apply for Leave</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/employees/add-leave-category">Add Leave Type</a>
+               </li>
                {% endif %}
 
             </ul>
@@ -58,13 +64,6 @@
 
             <ul class="mb-2 navbar-nav ms-auto mb-lg-0">
                {% if user.is_authenticated %}
-
-               <li>
-                  <a class="nav-link" href="/employees/leave-request">Apply for Leave</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/employees/add-leave-category">Add Leave Type</a>
-               </li>
                <li>
                   <a class="nav-link" href="/account/edit-employee">Edit Info</a>
                </li>
