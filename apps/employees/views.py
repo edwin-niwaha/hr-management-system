@@ -45,14 +45,13 @@ def addCategory(request):
 @login_required(login_url="/account/login-employee")
 def LeaveRequest(request):
     form = LeaveRequestForm()
-
     if request.method == "POST":
         form = LeaveRequestForm(request.POST)
-
         if form.is_valid():
             loan_obj = form.save(commit=False)
             loan_obj.employee = request.user.employee
             loan_obj.save()
+            messages.success(request, "Application sent successfully!")
             return redirect("/employees/leave-request")
     return render(request, "employees/leave_request.html", context={"form": form})
 
@@ -71,7 +70,7 @@ def updateLeave(request, id, template_name="employees/leave_update.html"):
     form = LeaveRequestForm(request.POST or None, instance=leave)
     if form.is_valid():
         form.save()
-        messages.success(request, "Application sent successfully!")
+        messages.success(request, "Application updated successfully!")
         return redirect("/employees/leave-history")
     return render(request, template_name, {"form": form})
 

@@ -14,7 +14,6 @@ Leave History
    function fade_out() {
       $(".messages").fadeOut().empty();
    }
-   $(".post-form")[0].reset(); // this is to reset the form 
 </script>
 {% endblock %}
 
@@ -44,7 +43,6 @@ Leave History
    <div class="padding">
       <h3 class="text-center text-primary">EMPLOYEE LEAVE HISTORY</h3>
       <hr>
-
       {% if messages %}
       <div class="container h-100 d-flex justify-content-center">
          <ul id="successMessage" class="messages">
@@ -55,7 +53,6 @@ Leave History
          </ul>
       </div>
       {% endif %}
-
       <div class="my-5 users">
          <table class="table text-left table-light table-hover table-bordered table-striped">
             <thead class="bg-dark ">

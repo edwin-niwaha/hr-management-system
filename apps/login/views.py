@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from .forms import EmployeeSignUpForm, EmployeeLoginForm, UpdateEmployeeForm
@@ -31,17 +32,17 @@ def sign_up_view(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse("home"))
 
+            messages.success(request, "Employee Registered successfully!")
             return HttpResponseRedirect(reverse("login:login_employee"))
 
         else:
             if User.objects.filter(username=request.POST["username"]).exists():
-                error = "employee already exists"
+                error = "Employee already exists"
 
             else:
                 error = (
                     "Your password is not strong enough or both password must be same"
                 )
-
     return render(
         request,
         "login/signup.html",

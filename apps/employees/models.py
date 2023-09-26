@@ -1,4 +1,6 @@
 import uuid
+import datetime
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.login.models import EmployeeSignUp
@@ -16,6 +18,9 @@ class leaveCategory(models.Model):
     created_at = models.DateField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        db_table = "leave_categories"
+
     def __str__(self):
         return self.leave_name
 
@@ -27,11 +32,24 @@ class leaveApplication(models.Model):
     )
     category = models.ForeignKey(leaveCategory, on_delete=models.CASCADE, null=True)
     date_of_application = models.DateField(auto_now_add=True)
-    leave_start = models.DateField("start date")
-    leave_end = models.DateField("end date")
+
+    def Date_validation(value):
+        if value < datetime.date.today():
+            raise ValidationError("The date cannot be in the past")
+
+    leave_start = models.DateField(
+        default=datetime.date.today, validators=[Date_validation]
+    )
+    leave_end = models.DateField(
+        default=datetime.date.today, validators=[Date_validation]
+    )
+    # leave_end = models.DateField("end date")
     leave_status = models.CharField(max_length=50, default="pending")
     date_of_approval = models.DateField(auto_now_add=True)
     remarks = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "leave_applications"
 
     def __str__(self):
         return self.employee.user.username

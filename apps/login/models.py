@@ -21,5 +21,8 @@ class EmployeeSignUp(models.Model):
     phone = models.IntegerField(blank=True, null=True)
     information = models.TextField(blank=True, null=True)
 
+    class Meta:
+        db_table = "employee_signup"
+
     def __str__(self):
         return self.user.username
