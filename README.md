@@ -25,7 +25,7 @@ The Hr Management System keeps track of all of the employee’s information and 
 ## Sample video of this Project
 
 Hr Management System -
-[![Watch the video](https://youtu.be/0qaWrDrrk5k)](https://youtu.be/0qaWrDrrk5k)
+[![Watch the video](![HR SYSTEM](https://github.com/edwin-niwaha/hr-management-system/assets/41472239/be5052ae-dae8-4c12-9a12-d3e996b6b743)](https://youtu.be/0qaWrDrrk5k)
 
 ## Installation
 
@@ -70,6 +70,4 @@ Then
 
 Visit `http://127.0.0.1:8000/`
 
-
-https://github.com/edwin-niwaha/hr-management-system/assets/41472239/2e7fcad6-4fb4-4eb2-9159-edc8e8fcd951
 
