@@ -1,0 +1,27 @@
+Running tests
+
+# Run the specified module
+py manage.py test apps.employees
+py manage.py test apps.login
+
+# Run the specified module
+py manage.py test apps.employees.tests
+py manage.py test apps.login.tests
+
+# Run the specified class
+py manage.py test apps.employees.tests.models
+py manage.py test apps.login.tests.models
+
+# Run the specified method
+py manage.py test apps.employees.tests.models.TestNew
+py manage.py test apps.login.tests.models.TestNew
+
+# Steps
+coverage run manage.py test apps.employees.tests
+coverage run manage.py test apps.login.tests
+
+py manage.py test apps.employees.tests
+py manage.py test apps.login.tests
+
+coverage report
+coverage html

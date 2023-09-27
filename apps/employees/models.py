@@ -2,7 +2,6 @@ import uuid
 import datetime
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.login.models import EmployeeSignUp
 
 # Create your models here.
@@ -10,11 +9,8 @@ from apps.login.models import EmployeeSignUp
 
 class leaveCategory(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    leave_name = models.CharField(max_length=100)
-    leave_description = models.CharField(max_length=250)
-    number_days_allowed = models.PositiveIntegerField(
-        validators=[MaxValueValidator(30), MinValueValidator(0)]
-    )
+    leave = models.CharField(max_length=100)
+    description = models.CharField(max_length=250)
     created_at = models.DateField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -22,7 +18,7 @@ class leaveCategory(models.Model):
         db_table = "leave_categories"
 
     def __str__(self):
-        return self.leave_name
+        return self.leave
 
 
 class leaveApplication(models.Model):
@@ -43,7 +39,7 @@ class leaveApplication(models.Model):
     leave_end = models.DateField(
         default=datetime.date.today, validators=[Date_validation]
     )
-    # leave_end = models.DateField("end date")
+
     leave_status = models.CharField(max_length=50, default="pending")
     date_of_approval = models.DateField(auto_now_add=True)
     remarks = models.CharField(max_length=250)

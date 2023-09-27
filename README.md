@@ -8,10 +8,13 @@ pip install django-widget-tweaks
 pip install Pillow
 pip install django-crispy-forms
 pip install ruff
-ruff check --fix . to check for issues and forced fix
+ruff check --fix . `to check for issues and forced fix`
 
-```
-pip freeze > requirements.txt
-pip install -r requirements.txt
+- pip install coverage -to determine the scope to be tested
 
-```
+* coverage run manage.py test
+* coverage report
+* coverage html
+
+- pip freeze > requirements.txt
+- pip install -r requirements.txt
