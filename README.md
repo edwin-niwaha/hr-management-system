@@ -23,7 +23,7 @@ The Hr Management System keeps track of all of the employee’s information and 
 ## Sample video of this Project
 
 Hr Management System -
-[![Watch the video](image)](video)
+[![Watch the video](https://youtu.be/0qaWrDrrk5k)](https://youtu.be/0qaWrDrrk5k)
 
 ## Installation
 
