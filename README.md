@@ -1,3 +1,5 @@
+
+https://github.com/edwin-niwaha/hr-management-system/assets/41472239/393b65cb-1391-400c-9137-062bcc3970cf
 # hr-management-system
 
 The Hr Management System keeps track of all of the employee’s information and data. I created the employee's leave application CRUD (create, read, update, and delete) operations. This is a role-based module in which the authorized user can login and perform any operation on the data.
@@ -67,3 +69,7 @@ Then
 ```
 
 Visit `http://127.0.0.1:8000/`
+
+
+https://github.com/edwin-niwaha/hr-management-system/assets/41472239/2e7fcad6-4fb4-4eb2-9159-edc8e8fcd951
+
