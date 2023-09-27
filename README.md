@@ -1,4 +1,3 @@
-
 # hr-management-system
 
 The Hr Management System keeps track of all of the employee’s information and data. I created the employee's leave application CRUD (create, read, update, and delete) operations. This is a role-based module in which the authorized user can login and perform any operation on the data.
@@ -68,5 +67,3 @@ Then
 ```
 
 Visit `http://127.0.0.1:8000/`
-
-
